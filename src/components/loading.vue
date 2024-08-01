@@ -1,0 +1,61 @@
+<template>
+  <Teleport to="body">
+    <div class="loading">
+      <div class="overlay"></div>
+      <span class="loader"></span>
+    </div>
+  </Teleport>
+</template>
+
+<script setup></script>
+
+<style lang="scss" scoped>
+.loading {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 110;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  position: relative;
+  transform: rotate(45deg);
+  background: #fff;
+  position: absolute;
+  z-index: 111;
+}
+.loader::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  inset: 0px;
+  border-radius: 50%;
+  border: 24px solid var(--agree-color);
+  animation: prixClipFix 2s infinite linear;
+}
+
+@keyframes prixClipFix {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0);
+  }
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  }
+  75% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0);
+  }
+}
+</style>
